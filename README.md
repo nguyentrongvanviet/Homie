@@ -2,7 +2,31 @@
 
 Web tìm trọ bằng thuật toán thay vì thủ công và liên lạc. Repository mang tên Homie; bộ đặc tả dùng tên dự án TrueHome theo nội dung đã thống nhất.
 
-Đây là bộ đặc tả và checklist triển khai, chưa phải sản phẩm đã được lập trình. Các ô `[ ]` là việc chưa nghiệm thu; chỉ đánh dấu `[x]` khi có bằng chứng chạy được. Ngày lập: 06/10/2026.
+Repository hiện có **trang mẫu tìm phòng trên bản đồ** và bộ đặc tả/checklist để triển khai MVP đầy đủ. Các ô `[ ]` là việc chưa nghiệm thu; chỉ đánh dấu `[x]` khi có bằng chứng chạy được. Ngày lập: 06/10/2026.
+
+## Chạy trang map mẫu
+
+Cần Node.js 20.9+ và npm. Chạy từ thư mục gốc:
+
+```sh
+npm ci
+npm run dev
+```
+
+Mở [http://127.0.0.1:3000](http://127.0.0.1:3000). Trang có 18 phòng hư cấu tại TP.HCM, marker giá, lọc khu vực/giá/diện tích/tiện ích, tìm đường không dấu, chọn phòng qua card/marker và giao diện mobile. Bản đồ nền là dữ liệu OpenStreetMap; vị trí và thông tin phòng chỉ để minh họa, ảnh không phải ảnh phòng thực tế.
+
+Nhấn **Thử đồng bộ**, thay giá/trạng thái rồi lưu; quan sát list và map ở hai tab. Danh sách và map cùng sử dụng một snapshot API. Xem [MAP_SYNC.md](MAP_SYNC.md) để hiểu cách truy vấn vùng bản đồ, chống response cũ và cập nhật giữa các tab.
+
+Dữ liệu phòng mẫu nằm trong bộ nhớ của một tiến trình server, mất khi restart; chưa có database, auth, đặt phòng hoặc thanh toán thật. API chỉnh mẫu mặc định chỉ bật trong development; production phải chủ động bật `HOMIE_ENABLE_DEMO_MUTATIONS=true` nếu là môi trường demo riêng. Không bật endpoint demo trên hệ thống dữ liệu thật. Nền map cần Internet; URL tile có thể cấu hình trong [apps/web/.env.example](apps/web/.env.example).
+
+```sh
+npm run typecheck
+npm test
+npm run build
+npm start
+```
+
+`npm start` chạy bản production sau build; mặc định xem/lọc được nhưng không thay dữ liệu mẫu. Hướng dẫn và checklist MVP bên dưới là mục tiêu toàn hệ thống, không có nghĩa đã triển khai hết.
 
 ## 1. Mục tiêu và phạm vi
 
