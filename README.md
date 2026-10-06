@@ -1,4 +1,6 @@
-# TrueHome — Kế hoạch hoàn thành MVP cho nhóm 4 người
+# Homie — Kế hoạch hoàn thành MVP TrueHome cho nhóm 4 người
+
+Web tìm trọ bằng thuật toán thay vì thủ công và liên lạc. Repository mang tên Homie; bộ đặc tả dùng tên dự án TrueHome theo nội dung đã thống nhất.
 
 Đây là bộ đặc tả và checklist triển khai, chưa phải sản phẩm đã được lập trình. Các ô `[ ]` là việc chưa nghiệm thu; chỉ đánh dấu `[x]` khi có bằng chứng chạy được. Ngày lập: 06/10/2026.
 
